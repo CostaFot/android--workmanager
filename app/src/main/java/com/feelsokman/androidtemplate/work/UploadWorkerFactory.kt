@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import com.feelsokman.androidtemplate.net.domain.UploadStuff
+import com.feelsokman.androidtemplate.net.domain.UploadStuffRepository
 
 class UploadWorkerFactory(
-    private val uploadStuff: UploadStuff
+    private val uploadStuffRepository: UploadStuffRepository
 ) : WorkerFactory() {
 
     override fun createWorker(
@@ -18,7 +18,7 @@ class UploadWorkerFactory(
 
         return when (workerClassName) {
             UploadWorker::class.java.name ->
-                UploadWorker(appContext, workerParameters, uploadStuff)
+                UploadWorker(appContext, workerParameters, uploadStuffRepository)
             else ->
                 // Return null, so that the base class can delegate to the default WorkerFactory.
                 null

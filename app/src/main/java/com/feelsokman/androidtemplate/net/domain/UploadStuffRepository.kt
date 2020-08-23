@@ -5,7 +5,7 @@ import com.feelsokman.androidtemplate.net.net.UploadService
 import com.feelsokman.androidtemplate.net.net.model.UploadResponse
 import kotlinx.coroutines.withContext
 
-class UploadStuff(
+class UploadStuffRepository(
     private val uploadService: UploadService,
     private val dispatcherProvider: DispatcherProvider
 ) {
