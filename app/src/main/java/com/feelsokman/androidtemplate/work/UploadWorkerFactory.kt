@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import com.feelsokman.androidtemplate.net.domain.JsonPlaceHolderClient
+import com.feelsokman.androidtemplate.net.domain.UploadStuff
 
-class DoSomethingWorkerFactory(
-    private val jsonPlaceHolderClient: JsonPlaceHolderClient
+class UploadWorkerFactory(
+    private val uploadStuff: UploadStuff
 ) : WorkerFactory() {
 
     override fun createWorker(
@@ -17,8 +17,8 @@ class DoSomethingWorkerFactory(
     ): ListenableWorker? {
 
         return when (workerClassName) {
-            DoSomethingWorker::class.java.name ->
-                DoSomethingWorker(appContext, workerParameters, jsonPlaceHolderClient)
+            UploadWorker::class.java.name ->
+                UploadWorker(appContext, workerParameters, uploadStuff)
             else ->
                 // Return null, so that the base class can delegate to the default WorkerFactory.
                 null

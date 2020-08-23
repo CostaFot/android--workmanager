@@ -6,8 +6,8 @@ import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.feelsokman.androidtemplate.core.coroutine.DispatcherProvider
 import com.feelsokman.androidtemplate.core.features.FlagProvider
 import com.feelsokman.androidtemplate.net.connectivity.ConnectivityChecker
-import com.feelsokman.androidtemplate.net.domain.JsonPlaceHolderClient
-import com.feelsokman.androidtemplate.net.net.JsonPlaceHolderService
+import com.feelsokman.androidtemplate.net.domain.UploadStuff
+import com.feelsokman.androidtemplate.net.net.UploadService
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -81,11 +81,11 @@ object NetworkModule {
     @Provides
     internal fun providesJsonPlaceHolderService(
         retrofit: Retrofit
-    ): JsonPlaceHolderService = retrofit.create(JsonPlaceHolderService::class.java)
+    ): UploadService = retrofit.create(UploadService::class.java)
 
     @Provides
     internal fun providesJsonPlaceHolderSClient(
-        jsonPlaceHolderService: JsonPlaceHolderService,
+        jsonPlaceHolderService: UploadService,
         dispatcherProvider: DispatcherProvider
-    ): JsonPlaceHolderClient = JsonPlaceHolderClient(jsonPlaceHolderService, dispatcherProvider)
+    ): UploadStuff = UploadStuff(jsonPlaceHolderService, dispatcherProvider)
 }

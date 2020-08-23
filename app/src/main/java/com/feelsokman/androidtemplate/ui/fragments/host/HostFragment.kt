@@ -21,7 +21,7 @@ import com.feelsokman.androidtemplate.ui.activity.viewmodel.MainViewModel
 import com.feelsokman.androidtemplate.ui.base.BaseFragment
 import com.feelsokman.androidtemplate.ui.fragments.host.viewmodel.HostViewModel
 import com.feelsokman.androidtemplate.utilities.viewmodel.ViewModelFactory
-import com.feelsokman.androidtemplate.work.DoSomethingWorker
+import com.feelsokman.androidtemplate.work.UploadWorker
 import javax.inject.Inject
 
 class HostFragment : BaseFragment(), ViewBinder.Callback {
@@ -65,14 +65,12 @@ class HostFragment : BaseFragment(), ViewBinder.Callback {
         }
 
         binding.button.setOnClickListener {
-
-            // workmanager example
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .setRequiresCharging(true)
                 .build()
 
-            val uploadWorkRequest = OneTimeWorkRequestBuilder<DoSomethingWorker>()
+            val uploadWorkRequest = OneTimeWorkRequestBuilder<UploadWorker>()
                 .setConstraints(constraints)
                 .build()
 
