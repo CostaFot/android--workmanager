@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class TemplateWorkerFactory @Inject constructor(
+class WorkerFactory @Inject constructor(
     uploadStuffRepository: UploadStuffRepository
 ) : DelegatingWorkerFactory() {
     init {
